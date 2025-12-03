@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alex Morgan | Portfolio</title>
+    <title>Iswan Edison | Multimedia Computing Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Reset and Base Styles */
+        /* CSS Variables */
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Reset & Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #1abc9c;
-            --accent-color: #ecf0f1;
-            --text-color: #333;
-            --light-text: #fff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
         }
 
         body {
@@ -41,12 +43,6 @@
 
         ul {
             list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
         }
 
         .container {
@@ -88,7 +84,7 @@
             display: inline-block;
             padding: 12px 28px;
             background-color: var(--secondary-color);
-            color: var(--light-text);
+            color: white;
             border-radius: 4px;
             font-weight: 600;
             cursor: pointer;
@@ -98,7 +94,7 @@
         }
 
         .btn:hover {
-            background-color: #16a085;
+            background-color: #2980b9;
             transform: translateY(-3px);
             box-shadow: var(--shadow);
         }
@@ -109,8 +105,8 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: var(--primary-color);
-            color: var(--light-text);
+            background-color: white;
+            color: var(--primary-color);
             z-index: 1000;
             box-shadow: var(--shadow);
         }
@@ -129,7 +125,7 @@
         }
 
         .logo span {
-            color: var(--light-text);
+            color: var(--primary-color);
         }
 
         .nav-links {
@@ -166,7 +162,7 @@
             display: none;
             background: none;
             border: none;
-            color: var(--light-text);
+            color: var(--primary-color);
             font-size: 1.5rem;
             cursor: pointer;
         }
@@ -174,7 +170,7 @@
         /* Home Section */
         #home {
             background: linear-gradient(135deg, var(--primary-color) 0%, #34495e 100%);
-            color: var(--light-text);
+            color: white;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -189,7 +185,7 @@
 
         .hero-content h1 {
             font-size: 3.5rem;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             line-height: 1.2;
         }
 
@@ -197,10 +193,20 @@
             color: var(--secondary-color);
         }
 
+        .hero-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             margin-bottom: 30px;
             opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .hero-btns {
@@ -219,11 +225,114 @@
             background-color: var(--secondary-color);
         }
 
-        /* Projects Section */
-        #projects {
-            background-color: var(--accent-color);
+        /* About Section */
+        #about {
+            background-color: white;
         }
 
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .about-img img {
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            width: 100%;
+            height: auto;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-item i {
+            color: var(--secondary-color);
+            width: 20px;
+        }
+
+        /* Skills Section */
+        #skills {
+            background-color: var(--light-color);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-category h3 i {
+            color: var(--secondary-color);
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background-color: var(--light-color);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
         .projects-filter {
             display: flex;
             justify-content: center;
@@ -245,17 +354,17 @@
 
         .filter-btn.active, .filter-btn:hover {
             background-color: var(--primary-color);
-            color: var(--light-text);
+            color: white;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 30px;
         }
 
         .project-card {
-            background-color: var(--light-text);
+            background-color: white;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow);
@@ -275,6 +384,28 @@
             justify-content: center;
             color: var(--primary-color);
             font-weight: 600;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-img::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.8), rgba(231, 76, 60, 0.8));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .project-card:hover .project-img::before {
+            opacity: 1;
+        }
+
+        .project-img span {
+            position: relative;
+            z-index: 1;
+            font-size: 1.2rem;
         }
 
         .project-info {
@@ -285,6 +416,14 @@
             font-size: 1.5rem;
             margin-bottom: 10px;
             color: var(--primary-color);
+        }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
         }
 
         .project-info p {
@@ -300,7 +439,7 @@
         }
 
         .project-tag {
-            background-color: var(--accent-color);
+            background-color: var(--light-color);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
@@ -312,74 +451,87 @@
             gap: 15px;
         }
 
-        /* About Me Section */
-        .about-content {
+        /* Education Section */
+        #education {
+            background-color: white;
+        }
+
+        .education-timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--secondary-color);
+        }
+
+        .education-item {
+            display: flex;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .education-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 50px;
+            justify-content: center;
+            margin-right: 30px;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.5rem;
+            z-index: 1;
         }
 
-        .about-img {
+        .education-content {
             flex: 1;
-            max-width: 400px;
-        }
-
-        .about-img img {
+            background-color: var(--light-color);
+            padding: 25px;
             border-radius: 8px;
             box-shadow: var(--shadow);
         }
 
-        .about-text {
-            flex: 1;
-        }
-
-        .about-text h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+        .education-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
             color: var(--primary-color);
         }
 
-        .about-text p {
-            margin-bottom: 20px;
-        }
-
-        .skills {
-            margin-top: 30px;
-        }
-
-        .skill-item {
-            margin-bottom: 20px;
-        }
-
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
+        .education-content h4 {
+            font-size: 1.1rem;
             margin-bottom: 8px;
+            color: var(--secondary-color);
+            font-weight: 500;
         }
 
-        .skill-bar {
-            height: 10px;
-            background-color: #ddd;
-            border-radius: 5px;
-            overflow: hidden;
+        .education-content .date {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
         }
 
-        .skill-progress {
-            height: 100%;
-            background-color: var(--secondary-color);
-            border-radius: 5px;
-            width: 0;
-            transition: width 1.5s ease;
+        .education-content p {
+            color: #666;
         }
 
         /* Contact Section */
         #contact {
             background-color: var(--primary-color);
-            color: var(--light-text);
+            color: white;
         }
 
         #contact .section-title h2 {
-            color: var(--light-text);
+            color: white;
         }
 
         .contact-container {
@@ -431,8 +583,12 @@
             font-family: inherit;
             font-size: 1rem;
             background-color: rgba(255, 255, 255, 0.1);
-            color: var(--light-text);
+            color: white;
             border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .form-control:focus {
@@ -453,7 +609,7 @@
         }
 
         .success-message {
-            background-color: #1abc9c;
+            background-color: var(--secondary-color);
             color: white;
             padding: 15px;
             border-radius: 4px;
@@ -465,7 +621,7 @@
         /* Footer */
         footer {
             background-color: #1a252f;
-            color: var(--light-text);
+            color: white;
             padding: 40px 0;
             text-align: center;
         }
@@ -501,17 +657,12 @@
 
         /* Responsive Styles */
         @media (max-width: 992px) {
-            .about-content {
+            .about-content, .contact-container {
                 flex-direction: column;
-                text-align: center;
             }
 
             .about-img {
                 max-width: 100%;
-            }
-
-            .contact-container {
-                flex-direction: column;
             }
         }
 
@@ -525,7 +676,7 @@
                 top: 70px;
                 left: 0;
                 width: 100%;
-                background-color: var(--primary-color);
+                background-color: white;
                 flex-direction: column;
                 align-items: center;
                 padding: 20px 0;
@@ -549,7 +700,7 @@
             .nav-links a {
                 display: block;
                 padding: 15px 0;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
             }
 
             .nav-links a:last-child {
@@ -569,6 +720,17 @@
                 width: 80%;
                 max-width: 250px;
             }
+
+            .education-timeline::before {
+                left: 20px;
+            }
+
+            .education-icon {
+                margin-right: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
         }
 
         @media (max-width: 576px) {
@@ -583,6 +745,10 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -591,12 +757,14 @@
     <header>
         <div class="container">
             <nav>
-                <a href="#home" class="logo">Alex<span>Morgan</span></a>
+                <a href="#home" class="logo">Iswan<span>Edison</span></a>
                 
                 <ul class="nav-links">
                     <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
-                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#education">Education</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
                 
@@ -611,11 +779,125 @@
     <section id="home" class="section">
         <div class="container">
             <div class="hero-content">
-                <h1>Hello, I'm <span>Alex Morgan</span></h1>
-                <p>Frontend Developer & UI/UX Designer passionate about creating clean, functional, and beautiful web experiences.</p>
+                <h1>Iswan <span>Edison</span></h1>
+                <h2>Multimedia Computing Student</h2>
+                <p>A motivated Multimedia Computing student at UNIMAS with foundations in programming, web development, game development, and graphic design. Passionate about creating innovative digital experiences and contributing to real-world applications in a dynamic team environment.</p>
                 <div class="hero-btns">
-                    <a href="#projects" class="btn">View My Work</a>
-                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                    <a href="#projects" class="btn">View My Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=869&q=80" alt="Iswan Edison - Multimedia Computing Student">
+                </div>
+                
+                <div class="about-text">
+                    <h3>Multimedia Computing Student & Aspiring Developer</h3>
+                    <p>I'm a dedicated Multimedia Computing student at University Sarawak Malaysia (UNIMAS) with a passion for creating engaging digital experiences. My journey combines technical programming skills with creative design thinking.</p>
+                    <p>I enjoy bridging the gap between code and creativity, whether it's developing interactive games, designing user interfaces, or building functional web applications. My goal is to leverage multimedia technology to solve real-world problems.</p>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span><strong>University:</strong> UNIMAS</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-book"></i>
+                            <span><strong>Major:</strong> Multimedia Computing</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span><strong>Location:</strong> Nusajaya, Johor</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-calendar"></i>
+                            <span><strong>Graduation:</strong> 2027</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Skills</h2>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">C#</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-gamepad"></i> Game Development</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Unity Engine</span>
+                        <span class="skill-tag">Godot Engine</span>
+                        <span class="skill-tag">Game Physics</span>
+                        <span class="skill-tag">2D Game Design</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Databases</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MariaDB</span>
+                        <span class="skill-tag">Database Design</span>
+                        <span class="skill-tag">Normalization</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-paint-brush"></i> Multimedia Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Adobe Creative Suite</span>
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Blender</span>
+                        <span class="skill-tag">UI/UX Design</span>
+                        <span class="skill-tag">Graphic Design</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Development Tools</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">Version Control</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3><i class="fas fa-users"></i> Soft Skills</h3>
+                    <div class="skill-list">
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Project Management</span>
+                        <span class="skill-tag">Team Collaboration</span>
+                        <span class="skill-tag">Creative Storytelling</span>
+                        <span class="skill-tag">User-Centered Design</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -629,70 +911,82 @@
             </div>
             
             <div class="projects-filter">
-                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="game">Game Development</button>
                 <button class="filter-btn" data-filter="web">Web Development</button>
                 <button class="filter-btn" data-filter="design">UI/UX Design</button>
-                <button class="filter-btn" data-filter="js">JavaScript</button>
             </div>
             
             <div class="projects-grid">
-                <!-- Project 1 -->
-                <div class="project-card" data-category="web">
-                    <div class="project-img">
-                        <span>E-Commerce Dashboard</span>
+                <!-- Project 1: Game Development -->
+                <div class="project-card" data-category="game">
+                    <div class="project-img" style="background-color: #8e44ad;">
+                        <span>2D Platformer Game</span>
                     </div>
                     <div class="project-info">
-                        <h3>E-Commerce Dashboard</h3>
-                        <p>A responsive admin dashboard for e-commerce analytics with interactive charts and data visualization.</p>
+                        <h3>Mobile App Game Development</h3>
+                        <div class="project-meta">
+                            <span>Semester 5 (2025/2026)</span>
+                            <span>Tools: Unity/Godot</span>
+                        </div>
+                        <p>Built a complete 2D platformer game, implementing game logic using C#/GD Script, physics systems, user interface, and integrating original 2D art assets. Developed for mobile platforms with optimized performance.</p>
                         <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">Charts.js</span>
+                            <span class="project-tag">C#</span>
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">Godot</span>
+                            <span class="project-tag">Game Physics</span>
+                            <span class="project-tag">2D Art</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
-                            <a href="#" class="btn btn-outline">Code</a>
+                            <button class="btn">View Details</button>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Project 2 -->
-                <div class="project-card" data-category="design">
-                    <div class="project-img">
-                        <span>Fitness App UI</span>
+                <!-- Project 2: Database System -->
+                <div class="project-card" data-category="web">
+                    <div class="project-img" style="background-color: #3498db;">
+                        <span>Car Rental System</span>
                     </div>
                     <div class="project-info">
-                        <h3>Fitness App UI</h3>
-                        <p>A modern fitness tracking application interface with workout plans, progress tracking, and nutrition logging.</p>
+                        <h3>Car Rental Database System</h3>
+                        <div class="project-meta">
+                            <span>Semester 4 (2024/2025)</span>
+                            <span>Tools: MySQL/MariaDB</span>
+                        </div>
+                        <p>Designed a normalized MySQL database schema and built a functional system for managing vehicle inventory, customer bookings, payments, and administrative reports. Implemented with a user-friendly interface for both customers and administrators.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">Database Design</span>
+                            <span class="project-tag">MariaDB</span>
+                            <span class="project-tag">System Design</span>
+                        </div>
+                        <div class="project-links">
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3: UI/UX Design -->
+                <div class="project-card" data-category="design">
+                    <div class="project-img" style="background-color: #e74c3c;">
+                        <span>ART Booking Prototype</span>
+                    </div>
+                    <div class="project-info">
+                        <h3>KUTS Sarawak Metro ART Booking</h3>
+                        <div class="project-meta">
+                            <span>Semester 4 (2024/2025)</span>
+                            <span>Tools: Figma</span>
+                        </div>
+                        <p>Designed a comprehensive UI/UX prototype for the KUTS Sarawak Metro Autonomous Rapid Transit (ART) booking system. Created user flows, wireframes, and interactive prototypes focusing on intuitive navigation and seamless booking experience.</p>
                         <div class="project-tags">
                             <span class="project-tag">Figma</span>
-                            <span class="project-tag">UI Design</span>
+                            <span class="project-tag">UI/UX Design</span>
                             <span class="project-tag">Prototyping</span>
+                            <span class="project-tag">User Research</span>
                         </div>
                         <div class="project-links">
-                            <a href="#" class="btn">View Design</a>
-                            <a href="#" class="btn btn-outline">Case Study</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="project-card" data-category="js">
-                    <div class="project-img">
-                        <span>Weather App</span>
-                    </div>
-                    <div class="project-info">
-                        <h3>Weather App</h3>
-                        <p>A weather forecasting application that uses geolocation and weather API to provide real-time weather data.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">JavaScript</span>
-                            <span class="project-tag">API Integration</span>
-                            <span class="project-tag">Responsive Design</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="#" class="btn">Live Demo</a>
-                            <a href="#" class="btn btn-outline">Code</a>
+                            <button class="btn">View Prototype</button>
                         </div>
                     </div>
                 </div>
@@ -700,63 +994,53 @@
         </div>
     </section>
 
-    <!-- About Me Section -->
-    <section id="about" class="section">
+    <!-- Education Section -->
+    <section id="education" class="section">
         <div class="container">
             <div class="section-title">
-                <h2>About Me</h2>
+                <h2>Education</h2>
             </div>
             
-            <div class="about-content">
-                <div class="about-img">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Alex Morgan - Frontend Developer">
+            <div class="education-timeline">
+                <!-- Current Education -->
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>Bachelor of Computer Science (Multimedia Computing) (Hons)</h3>
+                        <h4>University Sarawak Malaysia (UNIMAS)</h4>
+                        <div class="date">Expected Graduation: 2027</div>
+                        <p>Current GPA: 2.91 (4th Semester)</p>
+                        <p>Specializing in multimedia computing with coursework in programming, web development, game design, database systems, and multimedia tools.</p>
+                    </div>
                 </div>
                 
-                <div class="about-text">
-                    <h3>Frontend Developer with a Passion for Clean Code & Beautiful Design</h3>
-                    <p>Hello! I'm Alex, a passionate frontend developer with over 3 years of experience creating responsive, user-friendly websites and applications. I specialize in HTML, CSS, and JavaScript, with a keen eye for design details.</p>
-                    <p>My approach combines technical expertise with creative problem-solving to deliver solutions that not only look great but also provide exceptional user experiences.</p>
-                    
-                    <div class="skills">
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>HTML/CSS</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="95"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>JavaScript</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="90"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>UI/UX Design</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="85"></div>
-                            </div>
-                        </div>
-                        
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span>Responsive Design</span>
-                                <span>95%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" data-width="95"></div>
-                            </div>
-                        </div>
+                <!-- Previous Education -->
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>Sijil Matrikulasi KPM</h3>
+                        <h4>Johor Matriculation College</h4>
+                        <div class="date">2021/2022</div>
+                        <p>GPA: 3.00</p>
+                        <p>Completed pre-university program with focus on science and mathematics.</p>
+                    </div>
+                </div>
+                
+                <!-- School Education -->
+                <div class="education-item">
+                    <div class="education-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <div class="education-content">
+                        <h3>Sijil Pelajaran Malaysia (SPM)</h3>
+                        <h4>SMK Taman Bukit Indah</h4>
+                        <div class="date">2013-2019</div>
+                        <p>Results: 1A, 1A-, 2B+, 3B, 1C+, 1C, 1E</p>
+                        <p>Completed secondary education with strong performance in technical and scientific subjects.</p>
                     </div>
                 </div>
             </div>
@@ -767,18 +1051,18 @@
     <section id="contact" class="section">
         <div class="container">
             <div class="section-title">
-                <h2>Get In Touch</h2>
+                <h2>Contact Me</h2>
             </div>
             
             <div class="contact-container">
                 <div class="contact-info">
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
+                            <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h3>Email</h3>
-                            <p>alex@example.com</p>
+                            <h3>Location</h3>
+                            <p>79100 Nusajaya, Johor, Malaysia</p>
                         </div>
                     </div>
                     
@@ -788,17 +1072,27 @@
                         </div>
                         <div>
                             <h3>Phone</h3>
-                            <p>+1 (123) 456-7890</p>
+                            <p>+60 17-754 5213</p>
                         </div>
                     </div>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
+                            <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h3>Location</h3>
-                            <p>San Francisco, CA</p>
+                            <h3>Email</h3>
+                            <p>iswanEdison29@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p>linkedin.com/in/iswan-edison-124779256</p>
                         </div>
                     </div>
                 </div>
@@ -806,20 +1100,25 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" class="form-control" placeholder="Your Name">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Enter your name">
                             <div class="error-message" id="nameError">Please enter your name</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Your Email">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email">
                             <div class="error-message" id="emailError">Please enter a valid email</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" class="form-control" placeholder="Your Message"></textarea>
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" placeholder="Enter subject">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" placeholder="Enter your message"></textarea>
                             <div class="error-message" id="messageError">Please enter your message</div>
                         </div>
                         
@@ -837,17 +1136,18 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <a href="#home" class="logo">Alex<span>Morgan</span></a>
+            <a href="#home" class="logo">Iswan<span>Edison</span></a>
             
             <div class="social-links">
+                <a href="mailto:iswanEdison29@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/iswan-edison-124779256" aria-label="LinkedIn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
-                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="tel:+60177545213" aria-label="Phone"><i class="fas fa-phone"></i></a>
             </div>
             
             <div class="copyright">
-                <p>&copy; <span id="currentYear"></span> Alex Morgan. All rights reserved.</p>
+                <p>&copy; <span id="currentYear"></span> Iswan Edison. All rights reserved.</p>
+                <p>Multimedia Computing Student | University Sarawak Malaysia (UNIMAS)</p>
             </div>
         </div>
     </footer>
@@ -910,30 +1210,20 @@
                 projectCards.forEach(card => {
                     if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
                         card.style.display = 'block';
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'translateY(0)';
+                        }, 10);
                     } else {
-                        card.style.display = 'none';
+                        card.style.opacity = '0';
+                        card.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            card.style.display = 'none';
+                        }, 300);
                     }
                 });
             });
         });
-        
-        // Animate skill bars when scrolling to about section
-        const aboutSection = document.getElementById('about');
-        const skillBars = document.querySelectorAll('.skill-progress');
-        
-        function animateSkillBars() {
-            const aboutPosition = aboutSection.getBoundingClientRect().top;
-            const screenPosition = window.innerHeight / 1.3;
-            
-            if (aboutPosition < screenPosition) {
-                skillBars.forEach(skill => {
-                    const width = skill.getAttribute('data-width');
-                    skill.style.width = width + '%';
-                });
-            }
-        }
-        
-        window.addEventListener('scroll', animateSkillBars);
         
         // Contact form validation
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -1005,6 +1295,17 @@
                         behavior: 'smooth'
                     });
                 }
+            });
+        });
+        
+        // Add animation to skill tags on hover
+        document.querySelectorAll('.skill-tag').forEach(tag => {
+            tag.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-3px)';
+            });
+            
+            tag.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
             });
         });
     </script>

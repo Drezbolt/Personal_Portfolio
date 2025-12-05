@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iswan Edison | Cyber Portfolio</title>
+    <title>Iswan Edison | Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Cyber Theme Variables */
+        /* Floral Theme Variables */
         :root {
-            --cyber-blue: #00f3ff;
-            --cyber-purple: #9d00ff;
-            --cyber-pink: #ff00ff;
-            --cyber-dark: #0a0a0f;
-            --cyber-darker: #050510;
-            --cyber-gray: #1a1a2e;
-            --cyber-light: #e0e0ff;
-            --neon-glow: 0 0 10px var(--cyber-blue), 0 0 20px var(--cyber-blue), 0 0 30px var(--cyber-blue);
-            --purple-glow: 0 0 10px var(--cyber-purple), 0 0 20px var(--cyber-purple);
-            --pink-glow: 0 0 10px var(--cyber-pink), 0 0 20px var(--cyber-pink);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --floral-pink: #ff85a2;
+            --floral-lavender: #b399ff;
+            --floral-mint: #85ffc7;
+            --floral-peach: #ffb385;
+            --floral-cream: #fff9f0;
+            --floral-green: #85d685;
+            --floral-dark: #2d1b2e;
+            --floral-light: #fff9f5;
+            --transition: all 0.4s ease;
+            --shadow-soft: 0 8px 32px rgba(255, 133, 162, 0.1);
+            --shadow-medium: 0 15px 35px rgba(255, 133, 162, 0.15);
         }
 
         /* Reset & Base Styles */
@@ -29,16 +29,12 @@
         }
 
         body {
-            font-family: 'Orbitron', 'Segoe UI', sans-serif;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: var(--cyber-light);
-            background-color: var(--cyber-dark);
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(157, 0, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
-                linear-gradient(45deg, var(--cyber-darker) 0%, var(--cyber-dark) 100%);
-            min-height: 100vh;
+            color: var(--floral-dark);
+            background-color: var(--floral-cream);
             overflow-x: hidden;
+            position: relative;
         }
 
         html {
@@ -74,12 +70,9 @@
 
         .section-title h2 {
             font-size: 2.8rem;
-            color: var(--cyber-blue);
+            color: var(--floral-dark);
             display: inline-block;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: var(--neon-glow);
             position: relative;
             padding-bottom: 15px;
         }
@@ -89,65 +82,122 @@
             position: absolute;
             width: 100px;
             height: 3px;
-            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+            background: linear-gradient(90deg, transparent, var(--floral-pink), transparent);
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            box-shadow: var(--neon-glow);
         }
 
-        .cyber-btn {
+        .floral-btn {
             display: inline-block;
             padding: 14px 32px;
-            background: transparent;
-            color: var(--cyber-blue);
-            border: 2px solid var(--cyber-blue);
-            border-radius: 0;
+            background: linear-gradient(135deg, var(--floral-pink), var(--floral-lavender));
+            color: white;
+            border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            box-shadow: var(--shadow-soft);
             position: relative;
             overflow: hidden;
             z-index: 1;
         }
 
-        .cyber-btn::before {
+        .floral-btn::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
+            left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.3), transparent);
-            transition: 0.5s;
+            background: linear-gradient(135deg, var(--floral-lavender), var(--floral-pink));
+            opacity: 0;
+            transition: var(--transition);
             z-index: -1;
         }
 
-        .cyber-btn:hover::before {
-            left: 100%;
+        .floral-btn:hover::before {
+            opacity: 1;
         }
 
-        .cyber-btn:hover {
-            background-color: rgba(0, 243, 255, 0.1);
-            box-shadow: var(--neon-glow);
-            transform: translateY(-3px);
+        .floral-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
         }
 
-        /* Cyber Grid Background */
-        .cyber-grid {
+        /* Petal Rain Background */
+        .petal-container {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
             pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .petal {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--floral-pink);
+            border-radius: 50% 0 50% 50%;
+            opacity: 0.7;
+            transform: rotate(45deg);
+            animation: fall linear infinite;
+        }
+
+        .petal:nth-child(2n) {
+            background: var(--floral-lavender);
+            border-radius: 50% 50% 0 50%;
+        }
+
+        .petal:nth-child(3n) {
+            background: var(--floral-mint);
+            border-radius: 50%;
+        }
+
+        .petal:nth-child(4n) {
+            background: var(--floral-peach);
+            border-radius: 50% 0 50% 50%;
+            width: 15px;
+            height: 15px;
+        }
+
+        .petal:nth-child(5n) {
+            background: var(--floral-green);
+            border-radius: 50% 50% 0 50%;
+            width: 25px;
+            height: 25px;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Flower Decorations */
+        .flower {
+            position: absolute;
+            font-size: 2rem;
+            color: var(--floral-pink);
+            opacity: 0.3;
             z-index: -1;
         }
 
@@ -157,12 +207,12 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(10, 10, 15, 0.95);
+            background-color: rgba(255, 249, 240, 0.95);
             backdrop-filter: blur(10px);
-            color: var(--cyber-light);
+            color: var(--floral-dark);
             z-index: 1000;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-            border-bottom: 1px solid rgba(0, 243, 255, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid rgba(255, 133, 162, 0.1);
         }
 
         nav {
@@ -175,31 +225,24 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 700;
-            color: var(--cyber-blue);
-            text-shadow: var(--neon-glow);
-            letter-spacing: 2px;
+            color: var(--floral-pink);
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .logo span {
-            color: var(--cyber-pink);
-            text-shadow: var(--pink-glow);
+            color: var(--floral-lavender);
         }
 
-        .logo .pulse {
-            width: 8px;
-            height: 8px;
-            background-color: var(--cyber-blue);
-            border-radius: 50%;
-            box-shadow: var(--neon-glow);
-            animation: pulse 2s infinite;
+        .logo .flower-icon {
+            color: var(--floral-pink);
+            animation: bloom 3s infinite alternate;
         }
 
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.3; }
+        @keyframes bloom {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.1) rotate(10deg); }
         }
 
         .nav-links {
@@ -211,9 +254,7 @@
             font-weight: 500;
             position: relative;
             padding: 5px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+            transition: var(--transition);
         }
 
         .nav-links a::after {
@@ -223,7 +264,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--cyber-purple), var(--cyber-blue));
+            background: linear-gradient(90deg, var(--floral-pink), var(--floral-lavender));
             transition: var(--transition);
         }
 
@@ -232,30 +273,29 @@
         }
 
         .nav-links a:hover {
-            color: var(--cyber-blue);
-            text-shadow: 0 0 10px var(--cyber-blue);
+            color: var(--floral-pink);
         }
 
         .nav-links a.active {
-            color: var(--cyber-blue);
-            text-shadow: 0 0 10px var(--cyber-blue);
+            color: var(--floral-pink);
         }
 
         .mobile-menu-btn {
             display: none;
             background: none;
-            border: 2px solid var(--cyber-blue);
-            color: var(--cyber-blue);
+            border: 2px solid var(--floral-pink);
+            color: var(--floral-pink);
             width: 50px;
             height: 50px;
-            border-radius: 0;
+            border-radius: 50%;
             font-size: 1.5rem;
             cursor: pointer;
             transition: var(--transition);
         }
 
         .mobile-menu-btn:hover {
-            box-shadow: var(--neon-glow);
+            background-color: rgba(255, 133, 162, 0.1);
+            transform: rotate(90deg);
         }
 
         /* Home Section */
@@ -265,20 +305,7 @@
             align-items: center;
             padding-top: 100px;
             position: relative;
-            overflow: hidden;
-        }
-
-        #home::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 10%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--cyber-purple) 0%, transparent 70%);
-            opacity: 0.3;
-            filter: blur(40px);
-            z-index: -1;
+            background: linear-gradient(135deg, rgba(255, 249, 240, 0.9) 0%, rgba(255, 243, 230, 0.9) 100%);
         }
 
         .hero-content {
@@ -293,37 +320,31 @@
         }
 
         .hero-text h1 {
-            font-size: 4rem;
+            font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.1;
-            text-transform: uppercase;
-        }
-
-        .hero-text h1 .gradient-text {
-            background: linear-gradient(45deg, var(--cyber-blue), var(--cyber-purple), var(--cyber-pink));
+            background: linear-gradient(135deg, var(--floral-pink), var(--floral-lavender));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            display: inline-block;
         }
 
         .hero-text h2 {
             font-size: 1.8rem;
             margin-bottom: 25px;
-            color: var(--cyber-light);
-            font-weight: 300;
-            letter-spacing: 2px;
+            color: var(--floral-dark);
+            font-weight: 400;
         }
 
         .hero-text h2 span {
-            color: var(--cyber-blue);
-            text-shadow: var(--neon-glow);
+            color: var(--floral-pink);
+            font-weight: 600;
         }
 
         .hero-text p {
             font-size: 1.2rem;
             margin-bottom: 40px;
-            color: #a0a0ff;
+            color: #666;
             line-height: 1.8;
         }
 
@@ -333,12 +354,14 @@
         }
 
         .btn-secondary {
-            border-color: var(--cyber-purple);
-            color: var(--cyber-purple);
+            background: transparent;
+            border: 2px solid var(--floral-pink);
+            color: var(--floral-pink);
         }
 
         .btn-secondary:hover {
-            box-shadow: var(--purple-glow);
+            background: linear-gradient(135deg, var(--floral-pink), var(--floral-lavender));
+            color: white;
         }
 
         .hero-image {
@@ -351,39 +374,29 @@
         .photo-frame {
             width: 350px;
             height: 350px;
-            border: 3px solid var(--cyber-blue);
+            border-radius: 50%;
             position: relative;
-            box-shadow: var(--neon-glow);
             overflow: hidden;
-            background: var(--cyber-gray);
+            box-shadow: var(--shadow-medium);
+            border: 10px solid white;
         }
 
         .photo-frame::before {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, var(--cyber-blue), var(--cyber-purple), var(--cyber-pink), var(--cyber-blue));
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(135deg, var(--floral-pink), var(--floral-lavender), var(--floral-mint));
+            border-radius: 50%;
             z-index: -1;
-            animation: rotate 4s linear infinite;
+            animation: rotate 10s linear infinite;
         }
 
         @keyframes rotate {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        .photo-frame::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            right: 2px;
-            bottom: 2px;
-            background: var(--cyber-gray);
-            z-index: -1;
         }
 
         .profile-photo {
@@ -397,37 +410,35 @@
             transform: scale(1.05);
         }
 
-        .data-points {
+        .floral-decoration {
             position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
+            width: 100px;
+            height: 100px;
+            background: var(--floral-pink);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: -1;
         }
 
-        .data-point {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background-color: var(--cyber-blue);
-            border-radius: 50%;
-            box-shadow: var(--neon-glow);
+        .floral-decoration:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            background: var(--floral-lavender);
+        }
+
+        .floral-decoration:nth-child(2) {
+            bottom: 10%;
+            right: 10%;
+            background: var(--floral-mint);
+            width: 150px;
+            height: 150px;
         }
 
         /* About Section */
         #about {
+            background-color: white;
             position: relative;
-        }
-
-        #about::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
+            overflow: hidden;
         }
 
         .about-content {
@@ -437,34 +448,35 @@
             align-items: center;
         }
 
-        .cyber-card {
-            background: rgba(26, 26, 46, 0.7);
-            border: 1px solid rgba(0, 243, 255, 0.2);
+        .floral-card {
+            background: white;
+            border-radius: 20px;
             padding: 40px;
-            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-soft);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 133, 162, 0.1);
         }
 
-        .cyber-card::before {
+        .floral-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--cyber-purple), var(--cyber-blue));
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--floral-pink), var(--floral-lavender));
         }
 
-        .cyber-card h3 {
+        .floral-card h3 {
             font-size: 1.8rem;
             margin-bottom: 20px;
-            color: var(--cyber-blue);
+            color: var(--floral-dark);
         }
 
-        .cyber-card p {
+        .floral-card p {
             margin-bottom: 20px;
-            color: #b0b0ff;
+            color: #666;
             line-height: 1.8;
         }
 
@@ -480,24 +492,31 @@
             align-items: center;
             gap: 15px;
             padding: 15px;
-            background: rgba(0, 243, 255, 0.05);
-            border-left: 3px solid var(--cyber-blue);
+            background: linear-gradient(135deg, rgba(255, 133, 162, 0.05), rgba(179, 153, 255, 0.05));
+            border-radius: 10px;
             transition: var(--transition);
         }
 
         .info-item:hover {
-            background: rgba(0, 243, 255, 0.1);
-            transform: translateX(5px);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
         }
 
         .info-item i {
-            color: var(--cyber-blue);
-            font-size: 1.2rem;
-            width: 30px;
+            color: var(--floral-pink);
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 133, 162, 0.1);
+            border-radius: 50%;
         }
 
         /* Skills Section */
         #skills {
+            background: linear-gradient(135deg, rgba(255, 249, 240, 0.9) 0%, rgba(255, 243, 230, 0.9) 100%);
             position: relative;
         }
 
@@ -508,31 +527,32 @@
         }
 
         .skill-category {
-            background: rgba(26, 26, 46, 0.7);
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            background: white;
+            border-radius: 20px;
             padding: 30px;
+            box-shadow: var(--shadow-soft);
             position: relative;
             overflow: hidden;
             transition: var(--transition);
+            border: 1px solid rgba(255, 133, 162, 0.1);
         }
 
         .skill-category:hover {
             transform: translateY(-10px);
-            border-color: var(--cyber-blue);
-            box-shadow: var(--neon-glow);
+            box-shadow: var(--shadow-medium);
         }
 
         .skill-category h3 {
             font-size: 1.5rem;
             margin-bottom: 25px;
-            color: var(--cyber-blue);
+            color: var(--floral-dark);
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
         .skill-category h3 i {
-            color: var(--cyber-purple);
+            color: var(--floral-pink);
         }
 
         .skill-list {
@@ -542,36 +562,20 @@
         }
 
         .skill-tag {
-            background: rgba(0, 243, 255, 0.1);
+            background: linear-gradient(135deg, rgba(255, 133, 162, 0.1), rgba(179, 153, 255, 0.1));
             padding: 10px 18px;
-            border: 1px solid rgba(0, 243, 255, 0.3);
+            border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 500;
             transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-tag::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .skill-tag:hover::before {
-            left: 100%;
+            border: 1px solid rgba(255, 133, 162, 0.2);
         }
 
         .skill-tag:hover {
-            background: rgba(0, 243, 255, 0.2);
-            border-color: var(--cyber-blue);
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+            background: linear-gradient(135deg, var(--floral-pink), var(--floral-lavender));
+            color: white;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 133, 162, 0.2);
         }
 
         /* Projects Section */
@@ -583,39 +587,23 @@
             margin-bottom: 50px;
         }
 
-        .cyber-filter-btn {
+        .floral-filter-btn {
             padding: 12px 24px;
-            background: transparent;
-            border: 1px solid var(--cyber-blue);
-            color: var(--cyber-blue);
+            background: white;
+            border: 2px solid var(--floral-pink);
+            color: var(--floral-pink);
+            border-radius: 50px;
             cursor: pointer;
             font-weight: 500;
             transition: var(--transition);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-family: 'Orbitron', sans-serif;
-            position: relative;
-            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
         }
 
-        .cyber-filter-btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.2), transparent);
-            transition: 0.5s;
-        }
-
-        .cyber-filter-btn:hover::before {
-            left: 100%;
-        }
-
-        .cyber-filter-btn.active, .cyber-filter-btn:hover {
-            background: rgba(0, 243, 255, 0.1);
-            box-shadow: var(--neon-glow);
+        .floral-filter-btn.active, .floral-filter-btn:hover {
+            background: linear-gradient(135deg, var(--floral-pink), var(--floral-lavender));
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 133, 162, 0.3);
         }
 
         .projects-grid {
@@ -625,26 +613,27 @@
         }
 
         .project-card {
-            background: rgba(26, 26, 46, 0.7);
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            background: white;
+            border-radius: 20px;
             overflow: hidden;
+            box-shadow: var(--shadow-soft);
             transition: var(--transition);
             position: relative;
+            border: 1px solid rgba(255, 133, 162, 0.1);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            border-color: var(--cyber-blue);
-            box-shadow: var(--neon-glow);
+            box-shadow: var(--shadow-medium);
         }
 
         .project-img {
             height: 200px;
-            background: linear-gradient(45deg, var(--cyber-darker), var(--cyber-gray));
+            background: linear-gradient(135deg, var(--floral-pink), var(--floral-lavender));
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--cyber-blue);
+            color: white;
             font-weight: 600;
             position: relative;
             overflow: hidden;
@@ -655,7 +644,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            background: linear-gradient(45deg, rgba(0, 243, 255, 0.1), rgba(157, 0, 255, 0.1));
+            background: linear-gradient(135deg, rgba(255, 133, 162, 0.8), rgba(179, 153, 255, 0.8));
             opacity: 0;
             transition: var(--transition);
         }
@@ -668,8 +657,6 @@
             position: relative;
             z-index: 1;
             font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
 
         .project-info {
@@ -679,7 +666,7 @@
         .project-info h3 {
             font-size: 1.5rem;
             margin-bottom: 15px;
-            color: var(--cyber-blue);
+            color: var(--floral-dark);
         }
 
         .project-meta {
@@ -687,12 +674,12 @@
             justify-content: space-between;
             margin-bottom: 15px;
             font-size: 0.9rem;
-            color: #a0a0ff;
+            color: var(--floral-pink);
         }
 
         .project-info p {
             margin-bottom: 20px;
-            color: #b0b0ff;
+            color: #666;
             line-height: 1.6;
         }
 
@@ -704,15 +691,20 @@
         }
 
         .project-tag {
-            background: rgba(157, 0, 255, 0.1);
+            background: rgba(255, 133, 162, 0.1);
             padding: 6px 14px;
-            border-radius: 0;
+            border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 500;
-            border: 1px solid rgba(157, 0, 255, 0.3);
+            border: 1px solid rgba(255, 133, 162, 0.3);
         }
 
         /* Education Section */
+        #education {
+            background-color: white;
+            position: relative;
+        }
+
         .education-timeline {
             max-width: 800px;
             margin: 0 auto;
@@ -725,8 +717,8 @@
             left: 30px;
             top: 0;
             bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, var(--cyber-purple), var(--cyber-blue));
+            width: 3px;
+            background: linear-gradient(to bottom, var(--floral-pink), var(--floral-lavender));
         }
 
         .education-item {
@@ -738,26 +730,28 @@
         .education-icon {
             width: 60px;
             height: 60px;
-            background: var(--cyber-dark);
-            border: 2px solid var(--cyber-blue);
-            border-radius: 0;
+            background: white;
+            border: 3px solid var(--floral-pink);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-right: 30px;
             flex-shrink: 0;
-            color: var(--cyber-blue);
+            color: var(--floral-pink);
             font-size: 1.5rem;
             z-index: 1;
-            box-shadow: var(--neon-glow);
+            box-shadow: 0 5px 15px rgba(255, 133, 162, 0.2);
         }
 
         .education-content {
             flex: 1;
-            background: rgba(26, 26, 46, 0.7);
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            background: white;
+            border-radius: 15px;
             padding: 30px;
+            box-shadow: var(--shadow-soft);
             position: relative;
+            border: 1px solid rgba(255, 133, 162, 0.1);
         }
 
         .education-content::before {
@@ -766,47 +760,39 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--cyber-purple), var(--cyber-blue));
+            height: 5px;
+            background: linear-gradient(90deg, var(--floral-pink), var(--floral-lavender));
+            border-radius: 15px 15px 0 0;
         }
 
         .education-content h3 {
             font-size: 1.4rem;
             margin-bottom: 10px;
-            color: var(--cyber-blue);
+            color: var(--floral-dark);
         }
 
         .education-content h4 {
             font-size: 1.1rem;
             margin-bottom: 10px;
-            color: var(--cyber-purple);
+            color: var(--floral-pink);
             font-weight: 500;
         }
 
         .education-content .date {
-            color: #a0a0ff;
+            color: var(--floral-lavender);
             font-size: 0.9rem;
             margin-bottom: 15px;
             display: block;
         }
 
         .education-content p {
-            color: #b0b0ff;
+            color: #666;
         }
 
         /* Contact Section */
         #contact {
+            background: linear-gradient(135deg, rgba(255, 249, 240, 0.9) 0%, rgba(255, 243, 230, 0.9) 100%);
             position: relative;
-        }
-
-        #contact::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--cyber-pink), transparent);
         }
 
         .contact-container {
@@ -826,28 +812,28 @@
             align-items: center;
             gap: 20px;
             padding: 25px;
-            background: rgba(26, 26, 46, 0.7);
-            border: 1px solid rgba(0, 243, 255, 0.2);
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--shadow-soft);
             transition: var(--transition);
+            border: 1px solid rgba(255, 133, 162, 0.1);
         }
 
         .contact-item:hover {
-            border-color: var(--cyber-blue);
             transform: translateX(10px);
-            box-shadow: var(--neon-glow);
+            box-shadow: var(--shadow-medium);
         }
 
         .contact-icon {
             width: 60px;
             height: 60px;
-            background: rgba(0, 243, 255, 0.1);
-            border: 2px solid var(--cyber-blue);
-            border-radius: 0;
+            background: linear-gradient(135deg, var(--floral-pink), var(--floral-lavender));
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            color: var(--cyber-blue);
+            color: white;
         }
 
         .contact-form .form-group {
@@ -857,74 +843,62 @@
         .form-group label {
             display: block;
             margin-bottom: 10px;
-            color: var(--cyber-blue);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+            color: var(--floral-dark);
+            font-weight: 500;
         }
 
-        .cyber-input {
+        .floral-input {
             width: 100%;
             padding: 15px;
-            background: rgba(26, 26, 46, 0.7);
-            border: 1px solid rgba(0, 243, 255, 0.3);
-            color: var(--cyber-light);
-            font-family: 'Orbitron', sans-serif;
+            background: white;
+            border: 2px solid rgba(255, 133, 162, 0.2);
+            border-radius: 10px;
+            color: var(--floral-dark);
+            font-family: 'Poppins', sans-serif;
             font-size: 1rem;
             transition: var(--transition);
         }
 
-        .cyber-input:focus {
+        .floral-input:focus {
             outline: none;
-            border-color: var(--cyber-blue);
-            box-shadow: var(--neon-glow);
+            border-color: var(--floral-pink);
+            box-shadow: 0 0 0 3px rgba(255, 133, 162, 0.1);
         }
 
-        .cyber-input::placeholder {
-            color: #6666aa;
+        .floral-input::placeholder {
+            color: #aaa;
         }
 
-        textarea.cyber-input {
+        textarea.floral-input {
             min-height: 150px;
             resize: vertical;
         }
 
         .error-message {
-            color: var(--cyber-pink);
+            color: #ff6b6b;
             font-size: 0.9rem;
             margin-top: 5px;
             display: none;
-            text-shadow: 0 0 5px var(--cyber-pink);
         }
 
         .success-message {
-            background: rgba(0, 243, 255, 0.1);
-            border: 1px solid var(--cyber-blue);
-            color: var(--cyber-blue);
+            background: linear-gradient(135deg, rgba(133, 214, 133, 0.1), rgba(133, 255, 199, 0.1));
+            border: 2px solid var(--floral-green);
+            color: var(--floral-green);
             padding: 20px;
+            border-radius: 10px;
             margin-top: 20px;
             text-align: center;
             display: none;
-            text-shadow: 0 0 5px var(--cyber-blue);
         }
 
         /* Footer */
         footer {
-            background: var(--cyber-darker);
+            background: var(--floral-dark);
+            color: white;
             padding: 60px 0 30px;
             text-align: center;
-            border-top: 1px solid rgba(0, 243, 255, 0.2);
             position: relative;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--cyber-blue), transparent);
         }
 
         .social-links {
@@ -937,43 +911,24 @@
         .social-links a {
             width: 60px;
             height: 60px;
-            border: 2px solid var(--cyber-blue);
-            border-radius: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
             font-size: 1.5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .social-links a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 243, 255, 0.3), transparent);
-            transition: 0.5s;
-        }
-
-        .social-links a:hover::before {
-            left: 100%;
         }
 
         .social-links a:hover {
-            background: rgba(0, 243, 255, 0.1);
-            transform: translateY(-5px) rotate(5deg);
-            box-shadow: var(--neon-glow);
+            background: linear-gradient(135deg, var(--floral-pink), var(--floral-lavender));
+            transform: translateY(-5px);
         }
 
         .copyright {
             margin-top: 40px;
-            color: #6666aa;
+            color: rgba(255, 255, 255, 0.7);
             font-size: 0.9rem;
-            letter-spacing: 1px;
         }
 
         /* Responsive Styles */
@@ -996,7 +951,7 @@
 
         @media (max-width: 768px) {
             .hero-text h1 {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
 
             .nav-links {
@@ -1004,7 +959,7 @@
                 top: 80px;
                 left: 0;
                 width: 100%;
-                background: rgba(10, 10, 15, 0.98);
+                background: white;
                 flex-direction: column;
                 align-items: center;
                 padding: 20px 0;
@@ -1012,9 +967,8 @@
                 transform: translateY(-100%);
                 opacity: 0;
                 transition: var(--transition);
-                border-top: 1px solid rgba(0, 243, 255, 0.2);
-                border-bottom: 1px solid rgba(0, 243, 255, 0.2);
-                backdrop-filter: blur(10px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border-radius: 0 0 20px 20px;
             }
 
             .nav-links.active {
@@ -1030,7 +984,7 @@
             .nav-links a {
                 display: block;
                 padding: 20px 0;
-                border-bottom: 1px solid rgba(0, 243, 255, 0.1);
+                border-bottom: 1px solid rgba(255, 133, 162, 0.1);
             }
 
             .nav-links a:last-child {
@@ -1046,7 +1000,7 @@
                 align-items: flex-start;
             }
 
-            .cyber-btn {
+            .floral-btn {
                 width: 100%;
                 text-align: center;
             }
@@ -1073,7 +1027,7 @@
 
         @media (max-width: 576px) {
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2.3rem;
             }
 
             .section-title h2 {
@@ -1089,47 +1043,29 @@
                 grid-template-columns: 1fr;
             }
         }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--cyber-darker);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(var(--cyber-purple), var(--cyber-blue));
-            border-radius: 0;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(var(--cyber-blue), var(--cyber-purple));
-        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Cyber Grid Background -->
-    <div class="cyber-grid"></div>
+    <!-- Petal Rain Background -->
+    <div class="petal-container" id="petalContainer"></div>
 
     <!-- Header & Navigation -->
     <header>
         <div class="container">
             <nav>
                 <a href="#home" class="logo">
-                    <span class="pulse"></span>
-                    ISWAN<span>EDISON</span>
+                    <i class="fas fa-seedling flower-icon"></i>
+                    Iswan<span>Edison</span>
                 </a>
                 
                 <ul class="nav-links">
-                    <li><a href="#home" class="active">HOME</a></li>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#skills">SKILLS</a></li>
-                    <li><a href="#projects">PROJECTS</a></li>
-                    <li><a href="#education">EDUCATION</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
                 
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1141,22 +1077,24 @@
 
     <!-- Home Section -->
     <section id="home" class="section">
+        <div class="floral-decoration"></div>
+        <div class="floral-decoration"></div>
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1><span class="gradient-text">ISWAN EDISON</span></h1>
-                    <h2>MULTIMEDIA <span>COMPUTING</span> STUDENT</h2>
-                    <p>A motivated Multimedia Computing student at UNIMAS with expertise in programming, game development, web technologies, and creative design. Building the future of digital experiences with cutting-edge technology.</p>
+                    <h1>Iswan Edison</h1>
+                    <h2>Multimedia <span>Computing</span> Student</h2>
+                    <p>A creative Multimedia Computing student at UNIMAS with expertise in programming, game development, and digital design. Passionate about building beautiful, functional digital experiences that inspire and engage users.</p>
                     <div class="hero-btns">
-                        <a href="#projects" class="cyber-btn">VIEW PROJECTS</a>
-                        <a href="#contact" class="cyber-btn btn-secondary">CONNECT WITH ME</a>
+                        <a href="#projects" class="floral-btn">View My Work</a>
+                        <a href="#contact" class="floral-btn btn-secondary">Get In Touch</a>
                     </div>
                 </div>
                 
                 <div class="hero-image">
                     <div class="photo-frame">
-                        <img src="profile.jpg" alt="Iswan Edison" class="profile-photo">
-                        <div class="data-points" id="dataPoints"></div>
+                        <!-- PASTE YOUR PHOTO HERE -->
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Iswan Edison" class="profile-photo">
                     </div>
                 </div>
             </div>
@@ -1171,11 +1109,11 @@
             </div>
             
             <div class="about-content">
-                <div class="cyber-card">
-                    <h3>CYBER DEVELOPER</h3>
-                    <p>I'm a dedicated Multimedia Computing student at University Sarawak Malaysia (UNIMAS) with a passion for creating immersive digital experiences that bridge technology and creativity.</p>
-                    <p>My expertise spans game development, web technologies, database systems, and UI/UX design. I thrive on solving complex problems and transforming ideas into functional, visually stunning digital solutions.</p>
-                    <p>Currently focused on mastering Unity/Godot for game development while building robust web applications and database systems. Always exploring new technologies and pushing creative boundaries.</p>
+                <div class="floral-card">
+                    <h3>Creative Developer</h3>
+                    <p>I'm a dedicated Multimedia Computing student at University Sarawak Malaysia (UNIMAS) with a passion for creating immersive digital experiences that blend technology and artistry.</p>
+                    <p>My journey combines technical programming skills with creative design thinking, allowing me to build solutions that are both functional and aesthetically pleasing.</p>
+                    <p>Currently exploring game development with Unity/Godot while also mastering web technologies and database systems. I believe in the power of multimedia to transform ideas into engaging digital realities.</p>
                     
                     <div class="info-grid">
                         <div class="info-item">
@@ -1200,7 +1138,7 @@
                             </div>
                         </div>
                         <div class="info-item">
-                            <i class="fas fa-rocket"></i>
+                            <i class="fas fa-calendar-alt"></i>
                             <div>
                                 <strong>Graduation</strong><br>
                                 2027
@@ -1209,11 +1147,11 @@
                     </div>
                 </div>
                 
-                <div class="cyber-card">
-                    <h3>TECHNICAL PROFILE</h3>
-                    <p>With hands-on experience in both frontend and backend technologies, I specialize in creating cohesive digital ecosystems that deliver exceptional user experiences.</p>
+                <div class="floral-card">
+                    <h3>My Philosophy</h3>
+                    <p>I believe that great digital experiences are grown from the careful cultivation of code, design, and user understanding—much like tending to a garden.</p>
                     
-                    <div class="info-item" style="margin-top: 20px;">
+                    <div class="info-item" style="margin-top: 20px; margin-bottom: 20px;">
                         <i class="fas fa-gamepad"></i>
                         <div>
                             <strong>Game Development</strong><br>
@@ -1221,7 +1159,7 @@
                         </div>
                     </div>
                     
-                    <div class="info-item">
+                    <div class="info-item" style="margin-bottom: 20px;">
                         <i class="fas fa-code"></i>
                         <div>
                             <strong>Web Development</strong><br>
@@ -1229,7 +1167,7 @@
                         </div>
                     </div>
                     
-                    <div class="info-item">
+                    <div class="info-item" style="margin-bottom: 20px;">
                         <i class="fas fa-paint-brush"></i>
                         <div>
                             <strong>Creative Design</strong><br>
@@ -1253,7 +1191,7 @@
     <section id="skills" class="section">
         <div class="container">
             <div class="section-title">
-                <h2>Technical Skills</h2>
+                <h2>My Skills</h2>
             </div>
             
             <div class="skills-grid">
@@ -1334,86 +1272,86 @@
     <section id="projects" class="section">
         <div class="container">
             <div class="section-title">
-                <h2>Cyber Projects</h2>
+                <h2>My Projects</h2>
             </div>
             
             <div class="projects-filter">
-                <button class="cyber-filter-btn active" data-filter="all">ALL SYSTEMS</button>
-                <button class="cyber-filter-btn" data-filter="game">GAME DEV</button>
-                <button class="cyber-filter-btn" data-filter="web">WEB SYSTEMS</button>
-                <button class="cyber-filter-btn" data-filter="design">UI/UX DESIGN</button>
+                <button class="floral-filter-btn active" data-filter="all">All Projects</button>
+                <button class="floral-filter-btn" data-filter="game">Game Dev</button>
+                <button class="floral-filter-btn" data-filter="web">Web Systems</button>
+                <button class="floral-filter-btn" data-filter="design">UI/UX Design</button>
             </div>
             
             <div class="projects-grid">
                 <!-- Project 1: Game Development -->
                 <div class="project-card" data-category="game">
-                    <div class="project-img" style="background: linear-gradient(45deg, #1a1a2e, #16213e);">
-                        <span>2D PLATFORMER GAME</span>
+                    <div class="project-img" style="background: linear-gradient(135deg, #ff85a2, #ffb385);">
+                        <span>2D Platformer Game</span>
                     </div>
                     <div class="project-info">
-                        <h3>MOBILE APP GAME DEVELOPMENT</h3>
+                        <h3>Mobile App Game Development</h3>
                         <div class="project-meta">
-                            <span>SEMESTER 5 (2025/2026)</span>
-                            <span>TOOLS: UNITY/GODOT</span>
+                            <span>Semester 5 (2025/2026)</span>
+                            <span>Tools: Unity/Godot</span>
                         </div>
                         <p>Built a complete 2D platformer game implementing complex game logic using C#/GD Script, advanced physics systems, responsive UI, and integrated original 2D art assets optimized for mobile platforms.</p>
                         <div class="project-tags">
                             <span class="project-tag">C#</span>
-                            <span class="project-tag">UNITY</span>
-                            <span class="project-tag">GODOT</span>
-                            <span class="project-tag">GAME PHYSICS</span>
-                            <span class="project-tag">2D ART</span>
+                            <span class="project-tag">Unity</span>
+                            <span class="project-tag">Godot</span>
+                            <span class="project-tag">Game Physics</span>
+                            <span class="project-tag">2D Art</span>
                         </div>
                         <div class="project-links">
-                            <button class="cyber-btn">VIEW SYSTEM</button>
+                            <button class="floral-btn">View Project</button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 2: Database System -->
                 <div class="project-card" data-category="web">
-                    <div class="project-img" style="background: linear-gradient(45deg, #0f3460, #1a1a2e);">
-                        <span>CAR RENTAL SYSTEM</span>
+                    <div class="project-img" style="background: linear-gradient(135deg, #b399ff, #85ffc7);">
+                        <span>Car Rental System</span>
                     </div>
                     <div class="project-info">
-                        <h3>CAR RENTAL DATABASE SYSTEM</h3>
+                        <h3>Car Rental Database System</h3>
                         <div class="project-meta">
-                            <span>SEMESTER 4 (2024/2025)</span>
-                            <span>TOOLS: MYSQL/MARIADB</span>
+                            <span>Semester 4 (2024/2025)</span>
+                            <span>Tools: MySQL/MariaDB</span>
                         </div>
                         <p>Designed and implemented a fully normalized MySQL database schema with a comprehensive management system for vehicle inventory, customer bookings, payment processing, and administrative reporting.</p>
                         <div class="project-tags">
-                            <span class="project-tag">MYSQL</span>
-                            <span class="project-tag">DATABASE DESIGN</span>
-                            <span class="project-tag">MARIADB</span>
-                            <span class="project-tag">SYSTEM ARCHITECTURE</span>
+                            <span class="project-tag">MySQL</span>
+                            <span class="project-tag">Database Design</span>
+                            <span class="project-tag">MariaDB</span>
+                            <span class="project-tag">System Architecture</span>
                         </div>
                         <div class="project-links">
-                            <button class="cyber-btn">ACCESS DATABASE</button>
+                            <button class="floral-btn">View Project</button>
                         </div>
                     </div>
                 </div>
                 
                 <!-- Project 3: UI/UX Design -->
                 <div class="project-card" data-category="design">
-                    <div class="project-img" style="background: linear-gradient(45deg, #533483, #1a1a2e);">
-                        <span>ART BOOKING PROTOTYPE</span>
+                    <div class="project-img" style="background: linear-gradient(135deg, #85d685, #85ffc7);">
+                        <span>ART Booking Prototype</span>
                     </div>
                     <div class="project-info">
-                        <h3>KUTS SARAWAK METRO ART BOOKING</h3>
+                        <h3>KUTS Sarawak Metro ART Booking</h3>
                         <div class="project-meta">
-                            <span>SEMESTER 4 (2024/2025)</span>
-                            <span>TOOLS: FIGMA</span>
+                            <span>Semester 4 (2024/2025)</span>
+                            <span>Tools: Figma</span>
                         </div>
                         <p>Created a comprehensive UI/UX prototype for the KUTS Sarawak Metro Autonomous Rapid Transit booking system, featuring intuitive user flows, wireframes, and interactive prototypes focused on seamless user experience.</p>
                         <div class="project-tags">
-                            <span class="project-tag">FIGMA</span>
-                            <span class="project-tag">UI/UX DESIGN</span>
-                            <span class="project-tag">PROTOTYPING</span>
-                            <span class="project-tag">USER RESEARCH</span>
+                            <span class="project-tag">Figma</span>
+                            <span class="project-tag">UI/UX Design</span>
+                            <span class="project-tag">Prototyping</span>
+                            <span class="project-tag">User Research</span>
                         </div>
                         <div class="project-links">
-                            <button class="cyber-btn">VIEW PROTOTYPE</button>
+                            <button class="floral-btn">View Prototype</button>
                         </div>
                     </div>
                 </div>
@@ -1425,7 +1363,7 @@
     <section id="education" class="section">
         <div class="container">
             <div class="section-title">
-                <h2>Education Timeline</h2>
+                <h2>Education</h2>
             </div>
             
             <div class="education-timeline">
@@ -1435,9 +1373,9 @@
                         <i class="fas fa-graduation-cap"></i>
                     </div>
                     <div class="education-content">
-                        <h3>BACHELOR OF COMPUTER SCIENCE (MULTIMEDIA COMPUTING) (HONS)</h3>
-                        <h4>UNIVERSITY SARAWAK MALAYSIA (UNIMAS)</h4>
-                        <span class="date">EXPECTED GRADUATION: 2027</span>
+                        <h3>Bachelor of Computer Science (Multimedia Computing) (Hons)</h3>
+                        <h4>University Sarawak Malaysia (UNIMAS)</h4>
+                        <span class="date">Expected Graduation: 2027</span>
                         <p>Current GPA: 2.91 (4th Semester). Specializing in multimedia computing with advanced coursework in programming, web development, game design, database systems, and multimedia tools.</p>
                     </div>
                 </div>
@@ -1448,8 +1386,8 @@
                         <i class="fas fa-university"></i>
                     </div>
                     <div class="education-content">
-                        <h3>SIJIL MATRIKULASI KPM</h3>
-                        <h4>JOHOR MATRICULATION COLLEGE</h4>
+                        <h3>Sijil Matrikulasi KPM</h3>
+                        <h4>Johor Matriculation College</h4>
                         <span class="date">2021/2022</span>
                         <p>GPA: 3.00. Completed pre-university program with focus on science and mathematics, laying foundation for computer science studies.</p>
                     </div>
@@ -1461,8 +1399,8 @@
                         <i class="fas fa-school"></i>
                     </div>
                     <div class="education-content">
-                        <h3>SIJIL PELAJARAN MALAYSIA (SPM)</h3>
-                        <h4>SMK TAMAN BUKIT INDAH</h4>
+                        <h3>Sijil Pelajaran Malaysia (SPM)</h3>
+                        <h4>SMK Taman Bukit Indah</h4>
                         <span class="date">2013-2019</span>
                         <p>Results: 1A, 1A-, 2B+, 3B, 1C+, 1C, 1E. Completed secondary education with strong performance in technical and scientific subjects.</p>
                     </div>
@@ -1475,7 +1413,7 @@
     <section id="contact" class="section">
         <div class="container">
             <div class="section-title">
-                <h2>Contact Interface</h2>
+                <h2>Contact Me</h2>
             </div>
             
             <div class="contact-container">
@@ -1485,7 +1423,7 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h3>LOCATION</h3>
+                            <h3>Location</h3>
                             <p>79100 Nusajaya, Johor, Malaysia</p>
                         </div>
                     </div>
@@ -1495,7 +1433,7 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h3>PHONE</h3>
+                            <h3>Phone</h3>
                             <p>+60 17-754 5213</p>
                         </div>
                     </div>
@@ -1505,7 +1443,7 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h3>EMAIL</h3>
+                            <h3>Email</h3>
                             <p>iswanEdison29@gmail.com</p>
                         </div>
                     </div>
@@ -1515,7 +1453,7 @@
                             <i class="fab fa-linkedin"></i>
                         </div>
                         <div>
-                            <h3>LINKEDIN</h3>
+                            <h3>LinkedIn</h3>
                             <p>linkedin.com/in/iswan-edison-124779256</p>
                         </div>
                     </div>
@@ -1524,32 +1462,32 @@
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
-                            <label for="name">YOUR NAME</label>
-                            <input type="text" id="name" class="cyber-input" placeholder="ENTER YOUR NAME">
-                            <div class="error-message" id="nameError">NAME REQUIRED</div>
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="floral-input" placeholder="Enter your name">
+                            <div class="error-message" id="nameError">Please enter your name</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">YOUR EMAIL</label>
-                            <input type="email" id="email" class="cyber-input" placeholder="ENTER YOUR EMAIL">
-                            <div class="error-message" id="emailError">VALID EMAIL REQUIRED</div>
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" class="floral-input" placeholder="Enter your email">
+                            <div class="error-message" id="emailError">Please enter a valid email</div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject">SUBJECT</label>
-                            <input type="text" id="subject" class="cyber-input" placeholder="ENTER SUBJECT">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="floral-input" placeholder="Enter subject">
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">YOUR MESSAGE</label>
-                            <textarea id="message" class="cyber-input" placeholder="ENTER YOUR MESSAGE"></textarea>
-                            <div class="error-message" id="messageError">MESSAGE REQUIRED</div>
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="floral-input" placeholder="Enter your message"></textarea>
+                            <div class="error-message" id="messageError">Please enter your message</div>
                         </div>
                         
-                        <button type="submit" class="cyber-btn">TRANSMIT MESSAGE</button>
+                        <button type="submit" class="floral-btn">Send Message</button>
                         
                         <div class="success-message" id="successMessage">
-                            <i class="fas fa-check-circle"></i> MESSAGE TRANSMITTED SUCCESSFULLY
+                            <i class="fas fa-check-circle"></i> Thank you! Your message has been sent successfully.
                         </div>
                     </form>
                 </div>
@@ -1560,9 +1498,9 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <a href="#home" class="logo">
-                <span class="pulse"></span>
-                ISWAN<span>EDISON</span>
+            <a href="#home" class="logo" style="color: white;">
+                <i class="fas fa-seedling flower-icon"></i>
+                Iswan<span style="color: #ff85a2;">Edison</span>
             </a>
             
             <div class="social-links">
@@ -1574,46 +1512,48 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; <span id="currentYear"></span> ISWAN EDISON. ALL SYSTEMS OPERATIONAL.</p>
-                <p>MULTIMEDIA COMPUTING STUDENT | UNIVERSITY SARAWAK MALAYSIA (UNIMAS)</p>
+                <p>&copy; <span id="currentYear"></span> Iswan Edison. All rights reserved.</p>
+                <p>Multimedia Computing Student | University Sarawak Malaysia (UNIMAS)</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Cyber Portfolio JavaScript
+        // Floral Portfolio JavaScript
         
-        // Create data points animation for photo frame
-        function createDataPoints() {
-            const container = document.getElementById('dataPoints');
+        // Create petal rain effect
+        function createPetals() {
+            const container = document.getElementById('petalContainer');
             if (!container) return;
             
-            container.innerHTML = '';
-            const points = 15;
+            const petalCount = 50;
             
-            for (let i = 0; i < points; i++) {
-                const point = document.createElement('div');
-                point.className = 'data-point';
+            for (let i = 0; i < petalCount; i++) {
+                const petal = document.createElement('div');
+                petal.className = 'petal';
                 
                 // Random position
-                const x = Math.random() * 100;
-                const y = Math.random() * 100;
+                const left = Math.random() * 100;
                 
-                point.style.left = `${x}%`;
-                point.style.top = `${y}%`;
+                // Random size
+                const size = 10 + Math.random() * 15;
                 
                 // Random animation
-                const delay = Math.random() * 2;
-                const duration = 1 + Math.random() * 2;
+                const duration = 5 + Math.random() * 10;
+                const delay = Math.random() * 5;
                 
-                point.style.animation = `pulse ${duration}s infinite ${delay}s`;
+                petal.style.left = `${left}%`;
+                petal.style.width = `${size}px`;
+                petal.style.height = `${size}px`;
+                petal.style.animationDuration = `${duration}s`;
+                petal.style.animationDelay = `${delay}s`;
                 
-                container.appendChild(point);
+                container.appendChild(petal);
             }
         }
         
-        // Initialize data points
-        createDataPoints();
+        // Initialize petal rain
+        createPetals();
         
         // Mobile menu toggle
         document.getElementById('mobileMenuBtn').addEventListener('click', function() {
@@ -1655,11 +1595,11 @@
             });
         });
         
-        // Project filtering with cyber effects
-        document.querySelectorAll('.cyber-filter-btn').forEach(button => {
+        // Project filtering
+        document.querySelectorAll('.floral-filter-btn').forEach(button => {
             button.addEventListener('click', function() {
                 // Update active filter button
-                document.querySelectorAll('.cyber-filter-btn').forEach(btn => {
+                document.querySelectorAll('.floral-filter-btn').forEach(btn => {
                     btn.classList.remove('active');
                 });
                 this.classList.add('active');
@@ -1685,7 +1625,7 @@
             });
         });
         
-        // Cyber contact form validation
+        // Contact form validation
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1722,15 +1662,15 @@
                 messageError.style.display = 'none';
             }
             
-            // If form is valid, show success message with cyber effect
+            // If form is valid, show success message
             if (isValid) {
                 const successMessage = document.getElementById('successMessage');
                 successMessage.style.display = 'block';
                 
-                // Add cyber animation
+                // Add blooming animation
                 successMessage.style.animation = 'none';
                 setTimeout(() => {
-                    successMessage.style.animation = 'pulse 2s infinite';
+                    successMessage.style.animation = 'bloom 2s infinite alternate';
                 }, 10);
                 
                 // Reset form
@@ -1764,7 +1704,7 @@
             });
         });
         
-        // Add cyber hover effects to skill tags
+        // Add hover effects to skill tags
         document.querySelectorAll('.skill-tag').forEach(tag => {
             tag.addEventListener('mouseenter', function() {
                 this.style.transform = 'translateY(-3px)';
@@ -1775,42 +1715,16 @@
             });
         });
         
-        // Add typing effect to hero text
-        function typeWriter() {
-            const heroText = document.querySelector('.hero-text p');
-            if (!heroText) return;
+        // Add floating animation to info items
+        document.querySelectorAll('.info-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
             
-            const text = heroText.textContent;
-            heroText.textContent = '';
-            let i = 0;
-            
-            function type() {
-                if (i < text.length) {
-                    heroText.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, 30);
-                }
-            }
-            
-            // Start typing after a delay
-            setTimeout(type, 1000);
-        }
-        
-        // Start typing effect when page loads
-        window.addEventListener('load', typeWriter);
-        
-        // Add cyber sound effects (optional - commented out by default)
-        // Uncomment to add sound effects on interactions
-        /*
-        document.querySelectorAll('.cyber-btn, .cyber-filter-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                // Play cyber sound
-                const audio = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3');
-                audio.volume = 0.3;
-                audio.play();
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
             });
         });
-        */
     </script>
 </body>
 </html>

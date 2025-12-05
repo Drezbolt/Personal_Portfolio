@@ -1,0 +1,1218 @@
+/* Minecraft Theme Variables */
+:root {
+    --mc-green: #3cb371;
+    --mc-dark-green: #2d572c;
+    --mc-darker-green: #1e3a1e;
+    --mc-brown: #8b4513;
+    --mc-light-brown: #a0522d;
+    --mc-gray: #808080;
+    --mc-dark-gray: #555555;
+    --mc-darker-gray: #333333;
+    --mc-black: #1a1a1a;
+    --mc-blue: #4169e1;
+    --mc-cyan: #00bfff;
+    --mc-red: #dc143c;
+    --mc-yellow: #ffd700;
+    --mc-white: #f0f0f0;
+    --mc-border: 4px solid #000;
+    --mc-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
+    --mc-highlight: 4px 4px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    line-height: 1.6;
+    color: var(--mc-white);
+    background-color: var(--mc-darker-green);
+    background-image: 
+        linear-gradient(rgba(30, 58, 30, 0.9), rgba(30, 58, 30, 0.9)),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%232d572c"/><path d="M0,0H100V100H0Z" fill="none" stroke="%231e3a1e" stroke-width="2"/></svg>');
+    overflow-x: hidden;
+    position: relative;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 100px 0;
+    position: relative;
+}
+
+/* Diamond Ore Rain */
+.ore-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.ore {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.7;
+    animation: oreFall linear infinite;
+    text-shadow: 0 0 10px rgba(185, 242, 255, 0.5);
+}
+
+@keyframes oreFall {
+    0% {
+        transform: translateY(-100px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Loading Screen */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--mc-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.minecraft-loader {
+    margin-bottom: 40px;
+}
+
+.diamond {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #b9f2ff, #4169e1);
+    margin: 0 auto 20px;
+    transform: rotate(45deg);
+    position: relative;
+    animation: diamondPulse 1.5s infinite alternate;
+    box-shadow: 0 0 20px rgba(185, 242, 255, 0.5);
+}
+
+.diamond::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent 45%, rgba(255, 255, 255, 0.3) 50%, transparent 55%);
+}
+
+@keyframes diamondPulse {
+    0% { transform: rotate(45deg) scale(1); }
+    100% { transform: rotate(45deg) scale(1.1); }
+}
+
+.loading-text {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    color: var(--mc-cyan);
+    letter-spacing: 2px;
+}
+
+.loading-progress {
+    width: 300px;
+    height: 20px;
+    background-color: var(--mc-darker-gray);
+    border: var(--mc-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-progress::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: calc(100% - 4px);
+    width: 0%;
+    background: linear-gradient(90deg, var(--mc-green), var(--mc-cyan));
+    animation: loadingFill 2s ease-in-out forwards;
+}
+
+@keyframes loadingFill {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+/* Header & Navigation */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--mc-darker-green);
+    border-bottom: var(--mc-border);
+    z-index: 1000;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.5);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    color: var(--mc-cyan);
+    text-shadow: 2px 2px 0 #000;
+}
+
+.pixel-icon {
+    font-size: 1.5rem;
+}
+
+.health-bar {
+    width: 150px;
+    height: 20px;
+    background-color: var(--mc-darker-gray);
+    border: var(--mc-border);
+    position: relative;
+    overflow: hidden;
+}
+
+.health-fill {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: calc(100% - 4px);
+    width: 100%;
+    background: linear-gradient(90deg, #ff0000, #ff6b6b);
+}
+
+.nav-links {
+    display: flex;
+    gap: 5px;
+}
+
+.nav-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: var(--mc-dark-gray);
+    border: var(--mc-border);
+    color: var(--mc-white);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    text-align: center;
+    min-width: 90px;
+}
+
+.nav-btn i {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.nav-btn:hover {
+    background-color: var(--mc-gray);
+    transform: translateY(-2px);
+    box-shadow: var(--mc-shadow);
+}
+
+.nav-btn.active {
+    background-color: var(--mc-green);
+    color: #000;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background-color: var(--mc-dark-gray);
+    border: var(--mc-border);
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--mc-white);
+    margin: 4px 0;
+    transition: 0.3s;
+}
+
+/* Home Section */
+#home {
+    padding-top: 150px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.minecraft-title h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+    color: var(--mc-white);
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 0 #000;
+}
+
+.diamond-text {
+    color: var(--mc-cyan);
+    text-shadow: 0 0 10px rgba(185, 242, 255, 0.5);
+}
+
+.pixel-line {
+    width: 200px;
+    height: 4px;
+    background-color: var(--mc-green);
+    margin: 20px 0;
+    position: relative;
+}
+
+.pixel-line::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: #000;
+}
+
+.subtitle {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    color: var(--mc-yellow);
+    margin-bottom: 40px;
+    text-shadow: 2px 2px 0 #000;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--mc-dark-gray);
+}
+
+.stat-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mc-darker-gray);
+    border: 2px solid #000;
+}
+
+.stat-value {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    color: var(--mc-white);
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--mc-gray);
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+.hero-btns {
+    display: flex;
+    gap: 20px;
+}
+
+/* Minecraft Button */
+.minecraft-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--mc-green);
+    border: var(--mc-border);
+    color: #000;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    text-align: center;
+}
+
+.minecraft-btn span {
+    position: relative;
+    z-index: 1;
+}
+
+.minecraft-btn::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    right: -4px;
+    bottom: -4px;
+    background-color: var(--mc-dark-green);
+    z-index: 0;
+}
+
+.minecraft-btn:hover {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+.minecraft-btn:hover::before {
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.minecraft-btn.secondary {
+    background-color: var(--mc-brown);
+    color: var(--mc-white);
+}
+
+.minecraft-btn.small {
+    padding: 10px 20px;
+    font-size: 0.7rem;
+}
+
+/* Hero Image */
+.hero-image {
+    position: relative;
+}
+
+.pixel-frame {
+    width: 350px;
+    height: 350px;
+    position: relative;
+    margin: 0 auto;
+    background-color: var(--mc-darker-gray);
+    border: 4px solid #000;
+    overflow: hidden;
+}
+
+.frame-top, .frame-bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: var(--mc-brown);
+    z-index: 2;
+}
+
+.frame-top { top: 0; }
+.frame-bottom { bottom: 0; }
+
+.frame-left, .frame-right {
+    position: absolute;
+    top: 0;
+    width: 20px;
+    height: 100%;
+    background-color: var(--mc-light-brown);
+    z-index: 2;
+}
+
+.frame-left { left: 0; }
+.frame-right { right: 0; }
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.pixel-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: var(--mc-brown);
+    z-index: 3;
+}
+
+.tl { top: 0; left: 0; }
+.tr { top: 0; right: 0; }
+.bl { bottom: 0; left: 0; }
+.br { bottom: 0; right: 0; }
+
+.photo-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--mc-dark-gray);
+    border: var(--mc-border);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+}
+
+.label-icon {
+    font-size: 1.2rem;
+}
+
+/* Section Headers */
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.section-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2rem;
+    color: var(--mc-white);
+    margin-bottom: 15px;
+    text-shadow: 3px 3px 0 #000;
+}
+
+/* Minecraft Cards */
+.minecraft-card {
+    background-color: var(--mc-darker-gray);
+    border: var(--mc-border);
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.card-header {
+    background-color: var(--mc-dark-gray);
+    padding: 20px;
+    border-bottom: var(--mc-border);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.card-icon {
+    font-size: 1.5rem;
+}
+
+.card-header h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    color: var(--mc-white);
+}
+
+.card-content {
+    padding: 30px;
+}
+
+/* About Section */
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.card-text {
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--mc-dark-gray);
+}
+
+.info-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mc-darker-gray);
+    border: 2px solid #000;
+}
+
+.info-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: var(--mc-gray);
+    margin-bottom: 5px;
+}
+
+.info-value {
+    font-size: 0.9rem;
+    color: var(--mc-white);
+}
+
+.specialization-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--mc-dark-gray);
+    margin-bottom: 15px;
+}
+
+.specialization-item:last-child {
+    margin-bottom: 0;
+}
+
+.spec-icon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mc-darker-gray);
+    border: 2px solid #000;
+}
+
+.spec-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    color: var(--mc-cyan);
+    margin-bottom: 5px;
+}
+
+.spec-desc {
+    font-size: 0.8rem;
+    color: var(--mc-gray);
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.skill-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.skill-item {
+    padding: 12px 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--mc-dark-gray);
+    font-size: 0.8rem;
+    color: var(--mc-white);
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: var(--mc-green);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+/* Projects Section */
+.projects-filter {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    min-width: 120px;
+}
+
+.project-card {
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+}
+
+.project-preview {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-bottom: var(--mc-border);
+}
+
+.preview-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.preview-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.8rem;
+    color: var(--mc-white);
+    text-shadow: 2px 2px 0 #000;
+}
+
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 0.7rem;
+    color: var(--mc-gray);
+}
+
+.meta-item {
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border: 1px solid var(--mc-dark-gray);
+}
+
+.project-desc {
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.project-tag {
+    padding: 5px 10px;
+    background-color: var(--mc-dark-gray);
+    border: 2px solid #000;
+    font-size: 0.7rem;
+    color: var(--mc-white);
+}
+
+.project-btns {
+    display: flex;
+    justify-content: center;
+}
+
+/* Education Section */
+.education-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 100%;
+    background-color: var(--mc-green);
+    z-index: 0;
+}
+
+.education-item {
+    display: flex;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+.education-icon {
+    width: 60px;
+    height: 60px;
+    background-color: var(--mc-darker-gray);
+    border: var(--mc-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-right: 30px;
+    z-index: 1;
+}
+
+.education-content {
+    flex: 1;
+    background-color: var(--mc-darker-gray);
+    border: var(--mc-border);
+    padding: 30px;
+}
+
+.edu-header {
+    margin-bottom: 20px;
+}
+
+.edu-header h3 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.9rem;
+    color: var(--mc-white);
+    margin-bottom: 10px;
+}
+
+.edu-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--mc-gray);
+}
+
+.edu-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: var(--mc-gray);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 1rem;
+    color: var(--mc-white);
+    display: block;
+}
+
+.edu-desc {
+    line-height: 1.8;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Contact Section */
+.contact-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.contact-info {
+    margin-bottom: 30px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--mc-dark-gray);
+    margin-bottom: 15px;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mc-darker-gray);
+    border: 2px solid #000;
+}
+
+.contact-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: var(--mc-gray);
+    margin-bottom: 5px;
+}
+
+.contact-value {
+    font-size: 0.9rem;
+    color: var(--mc-white);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.social-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--mc-dark-gray);
+    border: var(--mc-border);
+    transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+    background-color: var(--mc-gray);
+    transform: translateY(-2px);
+}
+
+.social-icon {
+    font-size: 1.5rem;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-label {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    color: var(--mc-white);
+    margin-bottom: 10px;
+    display: block;
+}
+
+.minecraft-input {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--mc-darker-gray);
+    border: var(--mc-border);
+    color: var(--mc-white);
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9rem;
+}
+
+.minecraft-input:focus {
+    outline: none;
+    border-color: var(--mc-green);
+}
+
+.minecraft-input.textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+.minecraft-input::placeholder {
+    color: var(--mc-gray);
+}
+
+.error-message {
+    color: var(--mc-red);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.success-message {
+    background-color: var(--mc-dark-green);
+    border: var(--mc-border);
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.7rem;
+    color: var(--mc-white);
+    display: none;
+}
+
+.success-icon {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.submit-btn {
+    width: 100%;
+}
+
+/* Footer */
+footer {
+    background-color: var(--mc-black);
+    padding: 60px 0 30px;
+    border-top: var(--mc-border);
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1rem;
+    color: var(--mc-cyan);
+}
+
+.footer-quote {
+    font-size: 1.2rem;
+    color: var(--mc-white);
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.footer-copyright {
+    color: var(--mc-gray);
+    font-size: 0.8rem;
+    margin-bottom: 30px;
+}
+
+.xp-bar {
+    width: 300px;
+    height: 20px;
+    background-color: var(--mc-darker-gray);
+    border: var(--mc-border);
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.xp-fill {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: calc(100% - 4px);
+    width: 82%;
+    background: linear-gradient(90deg, #4169e1, #00bfff);
+}
+
+.xp-text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+    color: var(--mc-white);
+    z-index: 1;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--mc-green);
+    border: var(--mc-border);
+    color: #000;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    transition: all 0.3s ease;
+}
+
+.back-to-top:hover {
+    background-color: var(--mc-dark-green);
+    color: var(--mc-white);
+    transform: translateY(-5px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-content,
+    .about-content,
+    .contact-content,
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--mc-darker-green);
+        flex-direction: column;
+        padding: 20px;
+        gap: 10px;
+        transform: translateY(-100%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        border-bottom: var(--mc-border);
+        z-index: 999;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    
+    .mobile-menu-btn {
+        display: flex;
+    }
+    
+    .nav-left {
+        flex: 1;
+    }
+    
+    .health-bar {
+        display: none;
+    }
+    
+    .minecraft-title h1 {
+        font-size: 2rem;
+    }
+    
+    .pixel-frame {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .stats-grid,
+    .info-grid,
+    .skill-list {
+        grid-template-columns: 1fr;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .timeline-line {
+        left: 30px;
+    }
+    
+    .education-item {
+        flex-direction: column;
+    }
+    
+    .education-icon {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .minecraft-title h1 {
+        font-size: 1.5rem;
+    }
+    
+    .section-title {
+        font-size: 1.2rem;
+    }
+    
+    .minecraft-btn {
+        padding: 12px 20px;
+        font-size: 0.7rem;
+    }
+    
+    .hero-btns {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
